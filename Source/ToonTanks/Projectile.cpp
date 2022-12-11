@@ -16,7 +16,7 @@ AProjectile::AProjectile()
 	RootComponent = BaseMesh;
 	// Create the movement component for the projectile
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
-	ProjectileMovementComponent->InitialSpeed = 2500.f;
+	ProjectileMovementComponent->InitialSpeed = 1500.f;
 	ProjectileMovementComponent->MaxSpeed = 4000.f;
 
 }
