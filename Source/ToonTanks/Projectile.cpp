@@ -38,6 +38,7 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	//Gets called when projectile hits something, callback function from HitEvent
 	auto MyOwner = GetOwner();
 	if (MyOwner == nullptr) return;
 	
