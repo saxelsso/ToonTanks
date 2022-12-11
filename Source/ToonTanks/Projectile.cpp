@@ -47,7 +47,6 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	// Verify that we are not damaging ourselves or our orignal spawner/owner
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
-		UE_LOG(LogTemp, Display, TEXT("Damage taken!"));
 		UGameplayStatics::ApplyDamage(
 		OtherActor,
 		Damage,
