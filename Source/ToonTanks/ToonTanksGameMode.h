@@ -15,7 +15,6 @@ class TOONTANKS_API AToonTanksGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
-
 	void ActorDied(AActor* DeadActor);
 
 protected:
@@ -24,5 +23,9 @@ protected:
 private:
 	class ATank* Tank;
 	class AToonTanksPlayerController* ToonTanksPlayerController;
+
+	float StartDelay = 3.f;
+
+	void HandleGameStart();
 
 };
