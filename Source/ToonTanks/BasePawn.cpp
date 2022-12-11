@@ -47,7 +47,7 @@ void ABasePawn::Fire()
 		ProjectileSpawnPoint->GetComponentLocation(), 
 		ProjectileSpawnPoint->GetComponentRotation()
 		);
-	// ensure that we own this projectile, used when tracking the hit
+	// ensure that we own this projectile, used when tracking a hit in OnHit
 	Projectile->SetOwner(this);
 }
 

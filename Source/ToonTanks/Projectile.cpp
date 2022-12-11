@@ -14,6 +14,7 @@ AProjectile::AProjectile()
 	PrimaryActorTick.bCanEverTick = false;
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
 	RootComponent = BaseMesh;
+	// Create the movement component for the projectile
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
 	ProjectileMovementComponent->InitialSpeed = 2500.f;
 	ProjectileMovementComponent->MaxSpeed = 4000.f;
@@ -43,7 +44,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
 	auto DamageTypeClass = UDamageType::StaticClass();
 
-	// Verify that we are not hurting ourselves or our orignal spawner/owner
+	// Verify that we are not damaging ourselves or our orignal spawner/owner
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
 		UGameplayStatics::ApplyDamage(
