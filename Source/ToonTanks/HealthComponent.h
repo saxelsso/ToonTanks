@@ -27,6 +27,7 @@ private:
 	// expose damage function so that it can be called as a response to the OnTakeAnyDamage event
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Instigator, AActor* DamageCauser);
+	class AToonTanksGameMode* ToonTanksGameMode;
 
 public:	
 	// Called every frame
