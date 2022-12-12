@@ -48,6 +48,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	// Verify that we are not damaging ourselves or our orignal spawner/owner
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
+		// Trigger the ApplyDamage event using UGameplayStatics
 		UGameplayStatics::ApplyDamage(
 		OtherActor,
 		Damage,
