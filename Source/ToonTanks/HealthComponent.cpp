@@ -20,7 +20,7 @@ void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	Health = MaxHealth;
-	// Bind OnTakeAnyDamage to callback function DamageTaken
+	// Bind OnTakeAnyDamage to callback function DamageTaken, triggered from UGameplayStatics::ApplyDamage in Projectile.cpp
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
 	// Get the GameMode and make it known to the HealthComponent
 	ToonTanksGameMode = Cast<AToonTanksGameMode>(UGameplayStatics::GetGameMode(this));
