@@ -18,11 +18,17 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
             // Disable input on Tank
             ToonTanksPlayerController->SetPlayerEnabledState(false);
         }
+        GameOver(false);
     }
     // Attempt to cast to ATower, will return nullptr/false if cast fails
     else if (ATower* DestroyedTower = Cast<ATower>(DeadActor))
     {
         DestroyedTower->HandleDestruction();
+        TargetTowers--;
+        if (TargetTowers == 0)
+        {
+            GameOver(true);
+        }
     }
 
 }
@@ -39,6 +45,7 @@ void AToonTanksGameMode::BeginPlay()
 
 void AToonTanksGameMode::HandleGameStart()
 {
+    TargetTowers = GetTargetTowerCount();
 
     Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
     ToonTanksPlayerController = Cast<AToonTanksPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
@@ -61,3 +68,14 @@ void AToonTanksGameMode::HandleGameStart()
     }
 
 }
+
+int32 AToonTanksGameMode::GetTargetTowerCount()
+    {
+        TArray<AActor*> TowerActors;
+        UGameplayStatics::GetAllActorsOfClass(
+            this,
+            ATower::StaticClass(),
+            TowerActors
+        );
+        return TowerActors.Num();
+    }
