@@ -34,5 +34,8 @@ private:
 	// Purpose is to be able to associate what class to spawn on a Fire() event, i.e. the BP_Projectile class
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;
+	
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class UParticleSystem* DeathParticles;
 
 };
