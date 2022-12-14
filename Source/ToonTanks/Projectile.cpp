@@ -30,6 +30,8 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 	// Bind HitEvent to OnHit function. This must be in BeginPlay, calling in constructor is too early
 	BaseMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+	if (LaunchSound) UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
+	
 }
 
 // Called every frame
@@ -64,6 +66,8 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 		DamageTypeClass);
 		if (HitParticles) 
 			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
+		if (HitSound) UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+		
 		
 
 	}
