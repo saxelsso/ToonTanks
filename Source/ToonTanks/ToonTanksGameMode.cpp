@@ -46,6 +46,7 @@ void AToonTanksGameMode::BeginPlay()
 void AToonTanksGameMode::HandleGameStart()
 {
     TargetTowers = GetTargetTowerCount();
+    UE_LOG(LogTemp, Display, TEXT("Number of towers to defeat: %i"), TargetTowers);
 
     Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
     ToonTanksPlayerController = Cast<AToonTanksPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
