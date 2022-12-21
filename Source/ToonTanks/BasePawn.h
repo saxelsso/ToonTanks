@@ -20,6 +20,7 @@ public:
 protected:
 	void RotateTurret(FVector LookAtTarget);
 	void Fire();
+	void AltFire();
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true") )
@@ -30,6 +31,7 @@ private:
 	UStaticMeshComponent* TurretMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true") )
 	USceneComponent* ProjectileSpawnPoint;
+
 	// Create a variable that will be configured in the blueprint
 	// Purpose is to be able to associate what class to spawn on a Fire() event, i.e. the BP_Projectile class
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")

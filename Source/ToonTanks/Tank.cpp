@@ -33,7 +33,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
-
+	PlayerInputComponent->BindAction(TEXT("AltFire"), IE_Pressed, this, &ATank::AltFire);
 }
 
 void ATank::Tick(float DeltaTime)
@@ -76,7 +76,7 @@ void ATank::Move(float Value)
 	float DeltaTime = UGameplayStatics::GetWorldDeltaSeconds(this);
 	//DeltaLocation.X = Value * DeltaTime * 200.f;
 	//Smooth out movement for a very basic intertia simulation
-	CurrentVelocity.X = FMath::FInterpTo(CurrentVelocity.X, FMath::Clamp(Value, -1.0f, 1.0f) * Speed, DeltaTime, 5.f);	
+	CurrentVelocity.X = FMath::FInterpTo(CurrentVelocity.X, FMath::Clamp(Value, -1.0f, 1.0f) * Speed, DeltaTime, 3.f);	
 
 	AddActorLocalOffset(CurrentVelocity, true);
 }
@@ -88,7 +88,7 @@ void ATank::Turn(float Value)
 	float DeltaTime = UGameplayStatics::GetWorldDeltaSeconds(this);
 	//DeltaRotation.Yaw = Value * DeltaTime * 45.f;
 	//Smooth out rotation for a very basic intertia simulation
-	CurrentRotationVelocity.Yaw= FMath::FInterpTo(CurrentRotationVelocity.Yaw, FMath::Clamp(Value, -1.0f, 1.0f) * TurnRate, DeltaTime, 5.f);	
+	CurrentRotationVelocity.Yaw= FMath::FInterpTo(CurrentRotationVelocity.Yaw, FMath::Clamp(Value, -1.0f, 1.0f) * TurnRate, DeltaTime, 3.f);	
 
 	AddActorLocalRotation(CurrentRotationVelocity, true);
 }

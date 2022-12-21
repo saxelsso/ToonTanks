@@ -63,6 +63,20 @@ void ABasePawn::Fire()
 	Projectile->SetOwner(this);
 }
 
+void ABasePawn::AltFire()
+{
+	FRotator AimAngle = ProjectileSpawnPoint->GetComponentRotation();
+	AimAngle.Pitch = AimAngle.Pitch + 30;
+
+	// Spawn a projectile Actor at ProjectileSpawnPoint
+	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
+		ProjectileClass, 
+		ProjectileSpawnPoint->GetComponentLocation(), 
+		AimAngle
+		);
+	// ensure that we own this projectile, used when tracking a hit in OnHit
+	Projectile->SetOwner(this);
+}
 
 
 
