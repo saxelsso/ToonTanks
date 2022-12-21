@@ -46,10 +46,10 @@ private:
 
 
 	UPROPERTY(EditAnywhere, Category = "Movement" )
-	float Speed = 10.f;
+	float Speed = 6.f;
 
 	UPROPERTY(EditAnywhere, Category = "Movement" )
-	float TurnRate = 2.f;
+	float TurnRate = 1.5f;
 
 	FVector CurrentVelocity;
 	FRotator CurrentRotationVelocity;
