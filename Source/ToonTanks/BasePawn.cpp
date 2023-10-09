@@ -66,7 +66,7 @@ void ABasePawn::Fire()
 void ABasePawn::AltFire()
 {
 	FRotator AimAngle = ProjectileSpawnPoint->GetComponentRotation();
-	AimAngle.Pitch = AimAngle.Pitch + 30;
+	AimAngle.Pitch = AimAngle.Pitch + 45;
 
 	// Spawn a projectile Actor at ProjectileSpawnPoint
 	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
